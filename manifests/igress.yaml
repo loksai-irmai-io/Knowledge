@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: knowledge-graph-ingress
+  namespace: knowledge-graph  # Change namespace if needed
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx  
+  rules:
+    - host: knowledgegraph.example.com  # Update with your actual domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: knowledge-graph-service  # Update if needed
+                port:
+                  number: 8000  # Ensure this matches your service port
