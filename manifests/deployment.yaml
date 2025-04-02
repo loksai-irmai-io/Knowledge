@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knowledge-graph
+  namespace: knowledge-graph
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: knowledge-graph
+  template:
+    metadata:
+      labels:
+        app: knowledge-graph
+    spec:
+      containers:
+      - name: knowledge-graph
+        image: loksai/knowledge-graph:latest
+        ports:
+        - containerPort: 8080
