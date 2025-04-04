@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: knowledge-graph-ingress
+  namespace: knowledge-graph
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: knowledgegraph.example.com  # Replace with your actual domain or external IP for testing
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: knowledge-graph-service  # Ensure this matches the name in your service.yaml
+                port:
+                  number: 8000  # Match this with your service port (NOT containerPort)
