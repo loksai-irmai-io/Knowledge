@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: knowledge-graph
-        image: loksai/knowledgegraph:latest
+        image: knowledgegraphacr.azurecr.io/knowledgegraph:v1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
